@@ -18,7 +18,7 @@
    IDEA: 生成りの紙にえんじのインク。花嫁と花婿のうさぎが表紙に立つ
    PICTURE: タイトルをはさんで花嫁うさぎと指輪を差し出す花婿うさぎ。テーマカードからうさぎがはみ出す
    COLOUR and TYPE: 生成り#fdf7f3・えんじ#761c25・ベージュ#f0e4d8・こげ茶／Kiwi Maru見出し＋Zen Maru Gothic本文＋Yomogi手書き
-   LAYOUT: ヘッダー → タイトル → 新しい記事 → テーマから探す → ほかのブログ → えんじの帯 */
+   LAYOUT: ヘッダー → タイトル → はじめての方へ → ロードマップ → テーマから探す → ほかのブログ → えんじの帯 */
 :root{color-scheme:light;--bg:#fdf7f3;--ink:#3b2522;--sub:#7d665e;--red:#761c25;--red2:#8e2632;--be:#f2e1d2;--be2:#f1e6db;--line:#cdbfb5}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth}
@@ -76,32 +76,39 @@ a{color:inherit}
 .cta-ar svg{width:15px}
 .cta:focus-visible{outline:3px solid var(--red);outline-offset:4px}
 /* roadmap */
-.road{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;position:relative}
-.road::before{content:"";position:absolute;left:8%;right:8%;top:27px;border-top:2px dotted var(--red);opacity:.6}
+.road{list-style:none;margin:0;padding:6px 0 0;display:grid;grid-template-columns:repeat(var(--n,7),minmax(0,1fr));position:relative}
+.road::before{content:"";position:absolute;left:calc(50% / var(--n,7));right:calc(50% / var(--n,7));top:34px;border-top:2px dotted var(--red);opacity:.55}
+.road.many{grid-template-columns:repeat(var(--n),118px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.road.many>li{scroll-snap-align:start}
 .rm-i{position:relative;text-align:center}
-.rm-i a,.rm-i .rm-c{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 4px 8px;text-decoration:none;border-radius:12px;transition:transform .25s}
-.rm-i a:hover{transform:translateY(-3px)}
-.rm-i a:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.rm-i>a,.rm-i>.rm-c{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 4px 8px;text-decoration:none;border-radius:12px;transition:transform .25s}
+.rm-i>a:hover{transform:translateY(-3px)}
+.rm-i>a:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .rm-n{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:"Kiwi Maru",serif;font-size:19px;border:1.5px solid var(--ink);background:#fffdfb;color:var(--ink);margin-bottom:6px}
 .rm-i.done .rm-n{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 0 0 5px #f3dcdc}
 .rm-i.part .rm-n{background:var(--be)}
 .rm-i.soon .rm-n{border-style:dashed;color:var(--sub)}
-.rm-t{font-family:"Kiwi Maru",serif;font-size:15.5px;letter-spacing:.04em;line-height:1.4}
-.rm-s{font-size:12px;color:var(--sub);line-height:1.5}
-.rm-b{margin-top:4px;font-size:11.5px;font-weight:700;padding:1px 10px;border-radius:99px;border:1px solid var(--line);color:var(--sub);background:#fffdfb}
+.rm-t{font-family:"Kiwi Maru",serif;font-size:14px;letter-spacing:.01em;line-height:1.4;white-space:nowrap}
+.rm-s{font-size:11.5px;color:var(--sub);line-height:1.5}
+.rm-b{margin-top:4px;font-size:11.5px;font-weight:700;padding:1px 10px;border-radius:99px;border:1px solid var(--line);color:var(--sub);background:#fffdfb;white-space:nowrap}
 .rm-b.on{background:var(--red);border-color:var(--red);color:#fff}
 .rm-b.part{border-color:var(--red);color:var(--red)}
-.rm-i.soon{opacity:.7}
+.rm-i.soon .rm-t,.rm-i.soon .rm-s{color:var(--sub)}
+.rm-new{position:absolute;z-index:2;top:-10px;left:50%;margin-left:12px;background:#f6c447;color:var(--ink);font-family:"Kiwi Maru",serif;font-size:11.5px;letter-spacing:.06em;line-height:1;padding:5px 8px 4px;border-radius:99px;border:1.5px solid var(--ink);transform:scale(0) rotate(-20deg);transform-origin:20% 90%}
+.rv.on .rm-new{animation:newpop .7s cubic-bezier(.3,1.8,.5,1) .6s forwards,newbob 2.4s ease-in-out 1.6s infinite}
+@keyframes newpop{to{transform:scale(1) rotate(8deg)}}
+@keyframes newbob{0%,100%{transform:scale(1) rotate(8deg)}50%{transform:scale(1.08) rotate(-4deg)}}
 @media(max-width:760px){
-  .road{grid-template-columns:minmax(0,1fr);gap:4px;max-width:420px;margin:0 auto}
-  .road::before{left:27px;right:auto;top:10px;bottom:10px;border-top:0;border-left:2px dotted var(--red)}
-  .rm-i a,.rm-i .rm-c{display:grid;grid-template-columns:56px minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:14px;row-gap:0;text-align:left;align-items:center;padding:6px 0}
+  .road,.road.many{grid-template-columns:minmax(0,1fr);gap:2px;max-width:420px;margin:0 auto;overflow:visible}
+  .road::before{left:27px;right:auto;top:14px;bottom:14px;border-top:0;border-left:2px dotted var(--red)}
+  .rm-i>a,.rm-i>.rm-c{display:grid;grid-template-columns:56px minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:14px;row-gap:0;text-align:left;align-items:center;padding:6px 0}
   .rm-n{grid-row:1/3;margin:0}
   .rm-t{grid-column:2}.rm-s{grid-column:2}
   .rm-b{grid-column:3;grid-row:1/3;margin:0}
-  .cta-t .lg{display:none}.cta-t .sm{display:inline}
-  .cta{gap:10px;padding:8px}.cta-tag{font-size:12px;padding:4px 10px}
+  .rm-t{font-size:15px;white-space:normal}
+  .rm-new{top:-8px;left:-6px;margin-left:0}
 }
+@media(prefers-reduced-motion:reduce){.rm-new{transform:scale(1) rotate(8deg)}}
 
 /* section heads */
 .sh{display:flex;align-items:center;gap:28px;margin:clamp(40px,5vw,56px) 0 22px}
@@ -245,21 +252,15 @@ a:hover .arw{transform:translateX(4px);background:var(--red);border-color:var(--
 
 <main class="wrap">
   <div class="rv" id="posts">
-    <div class="sh"><h2>新しい記事</h2></div>
-    <a class="np" href="article.html">結婚が決まったら、何すればいい？<span class="arw" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-  </div>
-
-  <div class="rv">
     <div class="sh"><h2>結婚準備ロードマップ</h2></div>
     <p class="lede">いまどのあたり？ 順番に読めば、迷わず進めます</p>
-    <ol class="road">
-      <li class="rm-i done"><a href="article.html"><span class="rm-n">01</span><span class="rm-t">結婚が決まったら</span><span class="rm-s">話し合い・決める順番</span><span class="rm-b on">記事あり</span></a></li>
-      <li class="rm-i part"><a href="article.html#s5"><span class="rm-n">02</span><span class="rm-t">両家顔合わせ</span><span class="rm-s">日程・お店・しおり</span><span class="rm-b part">ざっくり解説</span></a></li>
-      <li class="rm-i part"><a href="article.html#s6"><span class="rm-n">03</span><span class="rm-t">入籍・手続き</span><span class="rm-s">婚姻届と名義変更</span><span class="rm-b part">ざっくり解説</span></a></li>
-      <li class="rm-i part"><a href="article.html#s7"><span class="rm-n">04</span><span class="rm-t">式場探し</span><span class="rm-s">見学のコツと比べ方</span><span class="rm-b part">ざっくり解説</span></a></li>
-      <li class="rm-i soon"><span class="rm-c"><span class="rm-n">05</span><span class="rm-t">ドレス・準備</span><span class="rm-s">衣装・招待状・ゲスト</span><span class="rm-b">準備中</span></span></li>
-      <li class="rm-i soon"><span class="rm-c"><span class="rm-n">06</span><span class="rm-t">結婚式当日</span><span class="rm-s">当日の流れと振り返り</span><span class="rm-b">準備中</span></span></li>
-    </ol>
+    <!--
+      ▼記事を追加するとき：下の script の POSTS に1行足すだけ
+        {stage:'02', title:'記事タイトル', url:'記事のURL', date:'2026-12-05'},
+      ・公開から14日間は、その段階に「NEW」が出ます
+      ・段階を増やす／名前を変えるときは STAGES を編集
+    -->
+    <ol class="road" id="road"></ol>
   </div>
 
   <div class="rv">
@@ -333,6 +334,39 @@ a:hover .arw{transform:translateX(4px);background:var(--red);border-color:var(--
   };
   stage.addEventListener('click',play);
   Promise.all(Object.values(fr).map(i=>i.decode?i.decode().catch(()=>{}):0)).then(()=>setTimeout(play,250));
+
+  /* roadmap (data) */
+  const STAGES=[
+    {no:'01',t:'結婚が決まったら',s:'話し合い・決める順番'},
+    {no:'02',t:'両家顔合わせ',s:'日程・お店・しおり',peek:'article.html#s5'},
+    {no:'03',t:'入籍・手続き',s:'婚姻届と名義変更',peek:'article.html#s6'},
+    {no:'04',t:'式場探し',s:'見学のコツと比べ方',peek:'article.html#s7'},
+    {no:'05',t:'ドレス・衣装',s:'試着と選び方'},
+    {no:'06',t:'招待状・準備',s:'ゲスト・席次・小物'},
+    {no:'07',t:'結婚式当日',s:'当日の流れと振り返り'}
+  ];
+  const POSTS=[
+    {stage:'01',title:'結婚が決まったら、何すればいい？',url:'article.html',date:'2026-11-25'}
+  ];
+  const NEW_DAYS=14;
+  {
+    const road=document.getElementById('road'),now=Date.now();
+    const e=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    road.style.setProperty('--n',STAGES.length);
+    if(STAGES.length>8)road.classList.add('many');
+    road.innerHTML=STAGES.map(st=>{
+      const ps=POSTS.filter(p=>p.stage===st.no).sort((a,b)=>b.date.localeCompare(a.date));
+      const isNew=ps.some(p=>(now-new Date(p.date+'T00:00:00+09:00'))/864e5<NEW_DAYS);
+      const neu=isNew?'<span class="rm-new">NEW</span>':'';
+      const body=`<span class="rm-n">${e(st.no)}</span><span class="rm-t">${e(st.t)}</span><span class="rm-s">${e(st.s)}</span>`;
+      if(ps.length){
+        const href=ps.length===1?ps[0].url:(st.page||ps[0].url);
+        return `<li class="rm-i done">${neu}<a href="${e(href)}" aria-label="${e(st.no+' '+st.t+'（記事'+ps.length+'本）')}">${body}<span class="rm-b on">記事${ps.length}本</span></a></li>`;
+      }
+      if(st.peek) return `<li class="rm-i part"><a href="${e(st.peek)}">${body}<span class="rm-b part">ざっくり解説</span></a></li>`;
+      return `<li class="rm-i soon"><span class="rm-c">${body}<span class="rm-b">準備中</span></span></li>`;
+    }).join('');
+  }
 
   const toast=document.getElementById('toast'),tx=document.getElementById('toastx');let tt;
   document.addEventListener('click',e=>{const a=e.target.closest('[data-soon]');if(!a)return;e.preventDefault();
