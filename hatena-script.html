@@ -1,0 +1,18 @@
+<script>
+/* よりみち帖：チェックリスト（デザイン設定 → カスタマイズ → 記事 → 記事下 に貼る） */
+(function(){
+  document.querySelectorAll('.yr-check:not(.ready)').forEach(function(box){
+    var key='yorimichi-'+(box.getAttribute('data-key')||'check');
+    var items=[].slice.call(box.querySelectorAll('.ck'));
+    var saved=[];try{saved=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}
+    items.forEach(function(el,i){var c=document.createElement('input');c.type='checkbox';c.checked=saved.indexOf(i)>=0;el.insertBefore(c,el.firstChild);
+      el.addEventListener('click',function(ev){if(ev.target!==c){ev.preventDefault();c.checked=!c.checked;upd()}});c.addEventListener('change',upd)});
+    var prog=box.querySelector('.prog'),meter=box.querySelector('.meter .bar-in');
+    function upd(){var on=[];items.forEach(function(el,i){if(el.firstChild.checked)on.push(i)});
+      if(prog)prog.textContent=on.length+' / '+items.length+' できた！';if(meter)meter.style.width=(on.length/items.length*100)+'%';
+      try{localStorage.setItem(key,JSON.stringify(on))}catch(e){}}
+    var r=box.querySelector('.reset');if(r)r.addEventListener('click',function(){items.forEach(function(el){el.firstChild.checked=false});upd()});
+    box.classList.add('ready');upd();
+  });
+})();
+</script>
