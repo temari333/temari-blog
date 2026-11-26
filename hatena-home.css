@@ -1,0 +1,44 @@
+/* ===== よりみち帖 ホーム・外枠 ===== */
+body{background:#fdf7f3!important;color:#4a2b20}
+#blog-title{display:none!important}
+#container,#content,#wrapper{background:transparent!important}
+.yr-head{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #ecdcd2;font-family:"Zen Maru Gothic",sans-serif}
+.yr-head .yr-lg{display:flex;gap:10px;align-items:center;color:#4a2b20;text-decoration:none;font-family:"Kiwi Maru",serif;font-size:18px;line-height:1.3}
+.yr-head .yr-lg img{height:26px;width:auto}
+.yr-head nav{display:flex;font-weight:700;font-size:14px;white-space:nowrap}
+.yr-head nav a{color:#4a2b20;text-decoration:none;padding:0 14px;border-left:1px solid #d9c6bb}
+.yr-head nav a:first-child{border-left:0}
+.yr-head nav a:hover{color:#b0383f}
+.yr-hero{display:none;max-width:1100px;margin:0 auto 8px}
+.page-index .yr-hero{display:block}
+.yr-hero img{width:100%;height:auto;display:block}
+/* 新しい記事カード（トップのみ） */
+.yr-new{font-family:"Zen Maru Gothic",sans-serif;margin-bottom:24px}
+.yr-sec{font-family:"Kiwi Maru",serif;font-size:22px;color:#761c25;margin:8px 0 16px;display:flex;align-items:center;gap:10px}
+.yr-sec::after{content:"";flex:1;border-top:1.5px dashed #d9b9a9}
+.yr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.yr-card{display:block;text-decoration:none!important;color:#4a2b20!important;background:#fffdfb;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px #ecdcd2,0 10px 20px -16px rgba(74,43,32,.4);transition:transform .2s}
+.yr-card:hover{transform:translateY(-3px)}
+.yr-card .th{aspect-ratio:16/10;background:#fbefe9 center/cover no-repeat;position:relative}
+.yr-card .new{position:absolute;top:10px;left:10px;background:#b0383f;color:#fff;font-size:11px;font-weight:900;border-radius:99px;padding:1px 10px}
+.yr-card .bd{padding:12px 16px 16px}
+.yr-card .cat{font-size:11px;color:#b0383f;font-weight:700;border:1px solid #b0383f;border-radius:99px;padding:0 8px;display:inline-block}
+.yr-card b{display:block;font-size:15px;line-height:1.55;margin:8px 0 6px}
+.yr-card time{font-size:12px;color:#9b8579}
+.yr-more{display:inline-block;margin-top:18px;color:#761c25;font-weight:700}
+.page-index.yr-cards-ok #main-inner > .entry,.page-index.yr-cards-ok #main-inner > .pager,.page-index.yr-cards-ok #main-inner > .archive-entries{display:none!important}
+/* サイドバー */
+#box2 .hatena-module-profile,#box2 .hatena-module-search,#box2 .hatena-module-links,#box2 .hatena-module-recent-entries,#box2 .hatena-module-archive{display:none!important}
+#box2-inner{display:flex;flex-direction:column}
+#box2 .hatena-module-custom-yr-prof{order:1}#box2 .hatena-module-category{order:2}#box2 .hatena-module-custom-yr-full{order:3}#box2 .hatena-module-custom-yr-ob{order:4}
+#box2 .hatena-module{background:#fffdfb;border-radius:10px;padding:18px;box-shadow:0 0 0 1px #ecdcd2;font-family:"Zen Maru Gothic",sans-serif;font-size:13px;line-height:1.8}
+#box2 .hatena-module-title{font-family:"Kiwi Maru",serif;color:#761c25;font-size:16px;border:0;margin-bottom:8px}
+#box2 .hatena-module-category li{border-bottom:1px dashed #e7d9cf}
+.yr-prof{text-align:center}.yr-prof img{width:110px;height:auto;margin:0 auto 6px;display:block}.yr-prof p{margin:0;text-align:left}
+.yr-full{text-align:center}.yr-tag{display:inline-block;background:#fde8a0;padding:2px 10px;border-radius:4px;font-size:12px}
+.yr-btn{display:inline-block;margin-top:6px;background:#b0383f;color:#fff!important;text-decoration:none!important;border-radius:99px;padding:6px 18px;font-weight:700}
+.yr-ob{display:flex;gap:12px;justify-content:center}.yr-ob-i{text-align:center;font-size:12px}.yr-ob-i img{width:64px;height:auto;margin:0 auto}
+.yr-soon{text-align:center;color:#9b8579;font-size:12px;margin:6px 0 0}
+/* フッター */
+.yr-foot{background:#761c25;color:#fff;text-align:center;padding:22px;font-family:"Kiwi Maru",serif;font-size:15px;letter-spacing:.08em}
+@media(max-width:640px){.yr-head{flex-direction:column;gap:8px;padding:12px}.yr-head nav{font-size:12px}.yr-head nav a{padding:0 9px}.yr-grid{grid-template-columns:1fr}}

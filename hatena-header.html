@@ -1,0 +1,25 @@
+<div class="yr-head"><a class="yr-lg" href="https://temari-blog.hatenablog.com/"><img src="https://temari333.github.io/temari-blog/img/logo.webp" alt="">30代プレ花嫁の結婚式までの準備ブログ</a><nav><a href="https://temari-blog.hatenablog.com/">ホーム</a><a href="https://temari-blog.hatenablog.com/archive">記事一覧</a><a href="https://temari-blog.hatenablog.com/about">プロフィール</a><a href="https://temari-blog.hatenablog.com/about">お問い合わせ</a></nav></div>
+<div class="yr-hero"><picture><source media="(max-width:640px)" srcset="https://temari333.github.io/temari-blog/img/hatena_header_sp.webp"><img src="https://temari333.github.io/temari-blog/img/hatena_header.webp" alt="30代プレ花嫁の結婚式までの準備ブログ" width="2400" height="986"></picture></div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  if(!document.body.classList.contains('page-index'))return;
+  var main=document.getElementById('main-inner');if(!main)return;
+  fetch('/archive').then(function(r){return r.text()}).then(function(h){
+    var d=new DOMParser().parseFromString(h,'text/html');
+    var es=[].slice.call(d.querySelectorAll('.archive-entry')).slice(0,6);
+    if(!es.length)return;
+    var now=Date.now(),html='';
+    es.forEach(function(e){
+      var a=e.querySelector('.entry-title a, a.entry-title-link');if(!a)return;
+      var t=e.querySelector('time'),dt=t?(t.getAttribute('datetime')||t.textContent):'';
+      var th=e.querySelector('.entry-thumb'),bg=th?(th.style.backgroundImage||''):'';
+      var c=e.querySelector('.archive-category-link, .categories a');
+      var isNew=dt&&(now-new Date(dt))/864e5<14;
+      html+='<a class="yr-card" href="'+a.href+'"><div class="th" style="'+(bg?'background-image:'+bg.replace(/"/g,"'"):'')+'">'+(isNew?'<span class="new">NEW</span>':'')+'</div><div class="bd">'+(c?'<span class="cat">'+c.textContent.trim()+'</span>':'')+'<b>'+a.textContent.trim()+'</b><time>'+(dt?dt.slice(0,10).replace(/-/g,'.'):'')+'</time></div></a>';
+    });
+    var box=document.createElement('section');box.className='yr-new';
+    box.innerHTML='<p class="yr-sec">新しい記事</p><div class="yr-grid">'+html+'</div><a class="yr-more" href="/archive">記事一覧を見る →</a>';
+    main.insertBefore(box,main.firstChild);document.body.classList.add('yr-cards-ok');
+  }).catch(function(){});
+});
+</script>
